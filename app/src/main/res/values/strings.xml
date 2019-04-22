@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SimpleChat</string>
+    <string name="choose_id_to_sign_in">CHOOSE ID TO SIGN IN</string>
+    <string name="id_red">RED</string>
+    <string name="id_yello">YELLOW</string>
+    <string name="id_blue">BLUE</string>
+    <string name="sing_in">SING IN</string>
+    <string name="result_success">success</string>
+    <string name="check_id_result">Check Id Response Result</string>
+    <string name="sign_out">Sign out</string>
+    <string name="member">member</string>
+    <string name="sample_popup">msg shows up here</string>
+    <string name="displays_user_id">displays user id</string>
+    <string name="id_group">GROUP</string>
+    <string name="check_id_valid">Please check if your ID is valid</string>
+    <string name="send">send</string>
+    <string name="socket_connected">Socket is connected to server socket</string>
+    <string name="change_name">Change Name</string>
+    <string name="new_name_hint">New Name</string>
+    <string name="server_problem">Something\'s wrong with the server</string>
+    <string name="new_name_invalid">New name Can not be empty !</string>
+
+</resources>
