@@ -8,10 +8,22 @@ It also uses following features.
 
 Simple Interface
 -------------------
-It has only three IDs to sign in, which are RED, YELLOW and BLUE.  
+No need to sign up for ID. 
 
-So user can use three devices to test the app.
+You can choose one among three IDs to sign in, which are RED, YELLOW and BLUE.  
 
-Users can chat with sigle client(p2p), and also with multiple clients(groupMsg). 
+So three devices can be used to test the app.
 
-Chat Messages are saved by DBManager whichi uses SQLIite. 
+You can chat with single client(p2p), and also with multiple clients(groupMsg). 
+
+Chat Messages are saved by DBManager using SQLIite. 
+
+
+Java Socket Server
+-----------
+You can find java socket server files from <a href= "https://github.com/Techkwon/simple-chat-java-server">here.</a>
+
+Java server handles clients message.
+
+When client_A wants to send message to client_B, 
+server receives the object of ChatMessage class checking who is the receiver and then pass the object to client B. 
