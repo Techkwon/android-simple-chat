@@ -21,7 +21,7 @@ Chat Messages are saved by DBManager using SQLIite.
 
 Java Socket Server
 -----------
-You can find java socket server files from <a href= "https://github.com/Techkwon/simple-chat-java-server">here.</a>
+You can find java socket server source from <a href= "https://github.com/Techkwon/simple-chat-java-server">here.</a>
 
 Java server handles clients message.
 
