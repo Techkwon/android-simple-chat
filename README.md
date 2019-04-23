@@ -27,3 +27,19 @@ Java server handles clients message.
 
 When client_A wants to send message to client_B, 
 server receives the object of ChatMessage class checking who is the receiver and then pass the object to client B. 
+
+<br/>
+### Sign In
+<img src="img/sign in.jpg" alt="sign_in"><br/>
+
+
+### Choose Member to Talk
+<img src="img/show members.jpg" alt="members"><br/>
+
+
+### Chat Room
+<img src="img/chat view.jpg" alt="chat"><br/>
+
+
+### Update Name at DB
+<img src="img/update database.jpg" alt="update"><br/>
