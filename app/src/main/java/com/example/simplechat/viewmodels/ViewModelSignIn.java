@@ -32,19 +32,17 @@ public class ViewModelSignIn extends AndroidViewModel {
 
     private MutableLiveData<User> liveUser;
     private Application application;
-    private SharedPreferences sharedPreferences;
 
     public ViewModelSignIn(@NonNull Application application) {
         super(application);
         this.application = application;
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application);
     }
 
     public void initViewModel(String userId){
         if(liveUser == null){
             liveUser = new MutableLiveData<>();
-            authenticate(userId);
         }
+        authenticate(userId);
     }
 
 
@@ -61,7 +59,7 @@ public class ViewModelSignIn extends AndroidViewModel {
 
     }
 
-    private void handleResponse(User user) throws IOException {
+    private void handleResponse(User user){
         String result = user.getResult();
         if(result.equals(application.getString(R.string.result_success))){
 
@@ -69,11 +67,8 @@ public class ViewModelSignIn extends AndroidViewModel {
 
             Constants.userId = user.getUserId();
             Constants.userName = user.getUserName();
+            Log.d("LOGIN DEBUG", "userId: " + user.getUserId() + "   userName: " + user.getUserName());
 
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(Constants.USER_ID, user.getUserId());
-            editor.putString(Constants.USER_NAME, user.getUserName());
-            editor.apply();
 
         }else {
             Log.d("SignInFragment", application.getString(R.string.check_id_result) + result);

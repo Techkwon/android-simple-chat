@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -36,7 +37,6 @@ public class SocketService extends Service {
     public static Socket socket;
     public static ObjectInputStream ois;
     public static ObjectOutputStream oos;
-    private SharedPreferences pref;
 
     private String userId;
     private String userName;
@@ -57,8 +57,8 @@ public class SocketService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         userId = intent.getStringExtra("userId");
         userName = intent.getStringExtra("userName");
-        Log.d(TAG, userId + " | " + userName);
-        return START_STICKY;
+        Log.d(TAG, "user id: " + userId + " | user name: " + userName);
+        return START_NOT_STICKY;
     }
 
     @Override
@@ -85,6 +85,8 @@ public class SocketService extends Service {
                     waitForMessages();
                 }
 
+                showToast("Socket is disconnected");
+                stopSelf();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -99,8 +101,6 @@ public class SocketService extends Service {
                 ChatMessage msg = (ChatMessage)ois.readObject();
                 String groupType = msg.getGroupType();
                 String senderId = msg.getSenderId();
-                String senderName = msg.getSenderName();
-                String msgBody = msg.getMessage();
 
 
                 switch (groupType){
@@ -109,17 +109,13 @@ public class SocketService extends Service {
                         if (Constants.CURRENT_ROOM.equals(senderId) || Constants.CURRENT_ROOM.equals("GROUP")) {
                             sendBundleMsg(msg);
                         }
-
-                        break;
-
-                    case "noti":
-
                         break;
 
                     case "sign out":
                         socket.close();
                         socket = null;
                         ois.close();
+                        ois = null;
                         break;
                 }
 

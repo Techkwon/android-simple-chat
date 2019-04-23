@@ -76,9 +76,9 @@ public class SignInFragment extends Fragment {
 
 
     private void setViewModel(String userId){
-        ViewModelSignIn viewmodel = ViewModelProviders.of(getActivity()).get(ViewModelSignIn.class);
-        viewmodel.initViewModel(userId);
-        viewmodel.getLiveUser().observe(this, mUser -> { //observe data change on MutatbleDat<User>
+        ViewModelSignIn viewModel = ViewModelProviders.of(getActivity()).get(ViewModelSignIn.class);
+        viewModel.initViewModel(userId);
+        viewModel.getLiveUser().observe(this, mUser -> { //observe data change on MutatbleDat<User>
             progressBar.setVisibility(View.INVISIBLE);
             moveFragment();
         });

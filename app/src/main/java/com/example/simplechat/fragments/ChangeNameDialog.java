@@ -38,11 +38,10 @@ import io.reactivex.schedulers.Schedulers;
 public class ChangeNameDialog extends DialogFragment {
 
     public static final String TAG = ChangeNameDialog.class.getSimpleName();
-    private SharedPreferences sharedPreferences;
     private String oldName;
     private TextInputLayout ti_newName;
     private ProgressBar progressBar;
-    private ViewModelMembers viewmodel;
+    private ViewModelMembers viewModel;
 
     @Nullable
     @Override
@@ -51,7 +50,6 @@ public class ChangeNameDialog extends DialogFragment {
 
         initView(layout);
         setViewModel();
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         return layout;
     }
 
@@ -82,16 +80,12 @@ public class ChangeNameDialog extends DialogFragment {
     }
 
 
-    private void handleResponse(User user) throws IOException{
+    private void handleResponse(User user) {
         String result = user.getResult();
         if(result.equals(getActivity().getString(R.string.result_success))){
 
-            viewmodel.setNewUser(user);
+            viewModel.setNewUser(user);
             Constants.userName = user.getUserName();
-
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(Constants.USER_NAME, user.getUserName());
-            editor.apply();
 
         }else {
             Toast.makeText(getActivity(), R.string.server_problem, Toast.LENGTH_SHORT).show();
@@ -101,7 +95,7 @@ public class ChangeNameDialog extends DialogFragment {
     }
 
     private void setViewModel(){
-        viewmodel = ViewModelProviders.of(getActivity()).get(ViewModelMembers.class);
+        viewModel = ViewModelProviders.of(getActivity()).get(ViewModelMembers.class);
     }
 
 

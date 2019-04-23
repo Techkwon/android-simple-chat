@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.simplechat.MainActivity;
 import com.example.simplechat.R;
 import com.example.simplechat.SocketService;
 import com.example.simplechat.adapters.AdapterForMembers;
@@ -109,13 +110,12 @@ public class MembersFragment extends Fragment {
             try {
                 SocketService.oos.writeObject(new ChatMessage("sign out", Constants.userId, "", "", "", ""));
                 SocketService.oos.flush();
-                backToMain();
-                getActivity().stopService(new Intent(getActivity(), SocketService.class));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();
         backToMain();
+
     }
 
 
@@ -135,16 +135,12 @@ public class MembersFragment extends Fragment {
         ChangeNameDialog fragment = new ChangeNameDialog();
         fragment.setOldName(Constants.userName);
         fragment.show(getFragmentManager(), ChangeNameDialog.TAG);
-
     }
 
-    private void backToMain(){
-        SignInFragment fragment = new SignInFragment();
-        final String tag = fragment.getClass().toString();
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .replace(android.R.id.content, fragment, tag)
-                .commit();
+    private void backToMain() {
+        Intent intent = new Intent(getContext(), MainActivity.class);
+        startActivity(intent);
+        getActivity().finish();
     }
 
 }

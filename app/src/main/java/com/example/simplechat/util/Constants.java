@@ -17,11 +17,12 @@ public class Constants {
     //SharedPreferences value keys..
     public static final String USER_ID = "woogear.simplechat.SHARED_PREFS.USER_ID";
     public static final String USER_NAME = "woogear.simplechat.SHARED_PREFS.USER_NAME";
+    public static final String IS_SIGNED_OUT = "woogear.simplechat.SHARED_PREFS.IS_SIGNED_OUT";
 
     //MsgMap
     public static final String MAP_MSG_CHAT = "woogear.simplechat.MAP_MSG_CHAT";
 
 
-    public static final String ip = "YOUR_IP_ADDRESS";
+    public static final String ip = "YOUR_SERVER_ADDRESS";
     public static final int port = 8080;
 }

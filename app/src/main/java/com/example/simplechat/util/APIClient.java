@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
 
-    private static final String BASE_URL = "http://YOUR_IP_ADDRESS/simpleChat/";
+    private static final String BASE_URL = "http://YOUR_SERVER_ADDRESS/simpleChat/";
 
     private static Retrofit retrofit = null;
 
